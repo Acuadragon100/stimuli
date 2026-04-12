@@ -1,9 +1,9 @@
 package xyz.nucleoid.stimuli.event.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
 
@@ -33,5 +33,5 @@ public interface BlockTrampleEvent {
         return EventResult.PASS;
     });
 
-    EventResult onTrample(LivingEntity entity, ServerWorld world, BlockPos pos, BlockState from, BlockState to);
+    EventResult onTrample(LivingEntity entity, ServerLevel world, BlockPos pos, BlockState from, BlockState to);
 }

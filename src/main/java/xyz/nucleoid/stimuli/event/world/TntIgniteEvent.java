@@ -1,8 +1,8 @@
 package xyz.nucleoid.stimuli.event.world;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
@@ -31,5 +31,5 @@ public interface TntIgniteEvent {
         return EventResult.PASS;
     });
 
-    EventResult onIgniteTnt(ServerWorld world, BlockPos pos, @Nullable LivingEntity igniter);
+    EventResult onIgniteTnt(ServerLevel world, BlockPos pos, @Nullable LivingEntity igniter);
 }

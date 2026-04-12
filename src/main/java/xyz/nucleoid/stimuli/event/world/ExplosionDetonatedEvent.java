@@ -1,11 +1,11 @@
 package xyz.nucleoid.stimuli.event.world;
 
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.explosion.Explosion;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
 
 import java.util.List;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Explosion;
 
 /**
  * Called when an {@link Explosion} is detonated in the world.

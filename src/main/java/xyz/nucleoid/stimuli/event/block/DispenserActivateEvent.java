@@ -1,9 +1,9 @@
 package xyz.nucleoid.stimuli.event.block;
 
-import net.minecraft.block.entity.DispenserBlockEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.DispenserBlockEntity;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
 
@@ -33,5 +33,5 @@ public interface DispenserActivateEvent {
         return EventResult.PASS;
     });
 
-    EventResult onActivate(ServerWorld world, BlockPos pos, DispenserBlockEntity dispenserBlockEntity, int slot, ItemStack stackToDispense);
+    EventResult onActivate(ServerLevel world, BlockPos pos, DispenserBlockEntity dispenserBlockEntity, int slot, ItemStack stackToDispense);
 }

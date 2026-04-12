@@ -1,12 +1,12 @@
 package xyz.nucleoid.stimuli.mixin.player;
 
-import net.minecraft.network.packet.c2s.play.PlayerActionC2SPacket;
-import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.network.ServerPlayerInteractionManager;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
+import net.minecraft.network.protocol.game.ServerboundPlayerActionPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerPlayerGameMode;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,25 +18,25 @@ import xyz.nucleoid.stimuli.Stimuli;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.block.BlockPunchEvent;
 
-@Mixin(ServerPlayerInteractionManager.class)
+@Mixin(ServerPlayerGameMode.class)
 public class ServerPlayerInteractionManagerMixin {
-    @Shadow protected ServerWorld world;
-    @Final @Shadow protected ServerPlayerEntity player;
+    @Shadow protected ServerLevel level;
+    @Final @Shadow protected ServerPlayer player;
 
     @Inject(
-            method = "processBlockBreakingAction",
+            method = "handleBlockBreakAction",
             at = @At(
                     value = "INVOKE",
                     shift = Shift.BEFORE,
-                    target = "Lnet/minecraft/server/world/ServerWorld;canEntityModifyAt(Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/BlockPos;)Z"
+                    target = "Lnet/minecraft/server/level/ServerLevel;mayInteract(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/BlockPos;)Z"
             ),
             cancellable = true
     )
-    public void processBlockBreakingAction(BlockPos pos, PlayerActionC2SPacket.Action action, Direction direction, int worldHeight, int sequence, CallbackInfo ci) {
+    public void processBlockBreakingAction(BlockPos pos, ServerboundPlayerActionPacket.Action action, Direction direction, int worldHeight, int sequence, CallbackInfo ci) {
         try (var invokers = Stimuli.select().forEntityAt(this.player, pos)) {
             var result = invokers.get(BlockPunchEvent.EVENT).onPunchBlock(this.player, direction, pos);
             if (result == EventResult.DENY) {
-                this.player.networkHandler.sendPacket(new BlockUpdateS2CPacket(pos, this.world.getBlockState(pos)));
+                this.player.connection.send(new ClientboundBlockUpdatePacket(pos, this.level.getBlockState(pos)));
                 ci.cancel();
             }
         }

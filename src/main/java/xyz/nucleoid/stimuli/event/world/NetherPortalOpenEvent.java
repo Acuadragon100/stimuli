@@ -1,7 +1,7 @@
 package xyz.nucleoid.stimuli.event.world;
 
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
 
@@ -29,5 +29,5 @@ public interface NetherPortalOpenEvent {
         return EventResult.PASS;
     });
 
-    EventResult onOpenNetherPortal(ServerWorld world, BlockPos lowerCorner);
+    EventResult onOpenNetherPortal(ServerLevel world, BlockPos lowerCorner);
 }

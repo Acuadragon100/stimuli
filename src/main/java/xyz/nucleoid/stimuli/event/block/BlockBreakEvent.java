@@ -1,13 +1,13 @@
 package xyz.nucleoid.stimuli.event.block;
 
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
 
 /**
- * Called when any {@link ServerPlayerEntity} attempts to break a block.
+ * Called when any {@link ServerPlayer} attempts to break a block.
  *
  * <p>Upon return:
  * <ul>
@@ -32,5 +32,5 @@ public interface BlockBreakEvent {
         return EventResult.PASS;
     });
 
-    EventResult onBreak(ServerPlayerEntity player, ServerWorld world, BlockPos pos);
+    EventResult onBreak(ServerPlayer player, ServerLevel world, BlockPos pos);
 }

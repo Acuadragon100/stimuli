@@ -1,8 +1,8 @@
 package xyz.nucleoid.stimuli.event.block;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.StimulusEvent;
 
@@ -30,5 +30,5 @@ public interface PowderSnowMeltEvent {
         return EventResult.PASS;
     });
 
-    EventResult onPowderSnowMelt(Entity entity, ServerWorld world, BlockPos pos);
+    EventResult onPowderSnowMelt(Entity entity, ServerLevel world, BlockPos pos);
 }

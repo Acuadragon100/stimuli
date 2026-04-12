@@ -1,14 +1,14 @@
 package xyz.nucleoid.stimuli.mixin;
 
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.mob.BoggedEntity;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.world.entity.monster.skeleton.Bogged;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin(BoggedEntity.class)
+@Mixin(Bogged.class)
 public interface BoggedEntityAccessor {
     @Accessor
-    static TrackedData<Boolean> getSHEARED() {
+    static EntityDataAccessor<Boolean> getDATA_SHEARED() {
         throw new AssertionError();
     }
 }
