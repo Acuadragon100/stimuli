@@ -16,7 +16,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.world.FluidFlowEvent;
 
 @Mixin(FlowingFluid.class)
-public class FlowableFluidMixin {
+public class FlowingFluidMixin {
     @Inject(method = "canMaybePassThrough(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/FluidState;)Z", at = @At("RETURN"), cancellable = true)
     private void applyFluidFlowEvent(BlockGetter blockView, BlockPos fluidPos, BlockState fluidBlockState, Direction flowDirection, BlockPos flowTo, BlockState flowToBlockState, FluidState fluidState, CallbackInfoReturnable<Boolean> ci) {
         if (!(blockView instanceof ServerLevel world)) {

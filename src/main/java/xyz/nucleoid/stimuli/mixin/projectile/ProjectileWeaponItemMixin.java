@@ -28,7 +28,7 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
 
 @Mixin(ProjectileWeaponItem.class)
-public abstract class RangedWeaponItemMixin implements PassBowUseTicks {
+public abstract class ProjectileWeaponItemMixin implements PassBowUseTicks {
 
     @Shadow
     protected abstract Projectile createProjectile(Level world, LivingEntity shooter, ItemStack weaponStack, ItemStack projectileStack, boolean critical);

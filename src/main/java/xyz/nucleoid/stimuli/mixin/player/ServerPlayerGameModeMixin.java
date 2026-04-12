@@ -19,7 +19,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.block.BlockPunchEvent;
 
 @Mixin(ServerPlayerGameMode.class)
-public class ServerPlayerInteractionManagerMixin {
+public class ServerPlayerGameModeMixin {
     @Shadow protected ServerLevel level;
     @Final @Shadow protected ServerPlayer player;
 

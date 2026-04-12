@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BowItem.class)
-public abstract class BowItemMixin extends RangedWeaponItemMixin {
+public abstract class BowItemMixin extends ProjectileWeaponItemMixin {
     @Unique private int lastRemainingUseTicks;
 
     @Override

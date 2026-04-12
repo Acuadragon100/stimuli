@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import xyz.nucleoid.stimuli.Stimuli;
 import xyz.nucleoid.stimuli.duck.ExplosionCancellable;
@@ -22,7 +21,7 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ServerExplosion;
 
 @Mixin(ServerExplosion.class)
-public abstract class ExplosionImplMixin implements Explosion, ExplosionCancellable {
+public abstract class ServerExplosionMixin implements Explosion, ExplosionCancellable {
     @Shadow @Final private ServerLevel level;
 
     @Unique private List<BlockPos> blocksToDestroy;

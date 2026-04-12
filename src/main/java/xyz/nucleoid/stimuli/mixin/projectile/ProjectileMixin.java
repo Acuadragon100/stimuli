@@ -16,8 +16,8 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.projectile.ProjectileHitEvent;
 
 @Mixin(Projectile.class)
-public abstract class ProjectileEntityMixin extends Entity {
-    public ProjectileEntityMixin(EntityType<?> type, Level world) {
+public abstract class ProjectileMixin extends Entity {
+    public ProjectileMixin(EntityType<?> type, Level world) {
         super(type, world);
     }
 

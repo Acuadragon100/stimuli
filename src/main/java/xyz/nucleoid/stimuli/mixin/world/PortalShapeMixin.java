@@ -18,7 +18,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.portal.PortalShape;
 
 @Mixin(PortalShape.class)
-public class NetherPortalMixin {
+public class PortalShapeMixin {
     @Shadow private BlockPos bottomLeft;
 
     @ModifyReturnValue(method = "findEmptyPortalShape", at = @At("RETURN"))
@@ -29,7 +29,7 @@ public class NetherPortalMixin {
             }
 
             var world = ((ServerLevelAccessor) worldAccess).getLevel();
-            var lowerCorner = ((NetherPortalMixin) (Object) portal).bottomLeft;
+            var lowerCorner = ((PortalShapeMixin) (Object) portal).bottomLeft;
 
             try (var invokers = Stimuli.select().at(world, lowerCorner)) {
                 var result = invokers.get(NetherPortalOpenEvent.EVENT).onOpenNetherPortal(world, lowerCorner);

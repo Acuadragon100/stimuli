@@ -13,7 +13,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.player.PlayerS2CPacketEvent;
 
 @Mixin(ServerCommonPacketListenerImpl.class)
-public class ServerCommonNetworkHandlerMixin {
+public class ServerCommonPacketListenerImplMixin {
     @Inject(method = "send(Lnet/minecraft/network/protocol/Packet;Lio/netty/channel/ChannelFutureListener;)V", at = @At("HEAD"), cancellable = true)
     private void onPacket(Packet<?> packet, ChannelFutureListener listener, CallbackInfo ci) {
         if ((Object) this instanceof ServerGamePacketListenerImpl networkHandler) {

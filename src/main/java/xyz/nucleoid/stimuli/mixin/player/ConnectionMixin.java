@@ -13,7 +13,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.player.PlayerC2SPacketEvent;
 
 @Mixin(Connection.class)
-public class ClientConnectionMixin {
+public class ConnectionMixin {
     @Inject(method = "genericsFtw", at = @At("HEAD"), cancellable = true)
     private static void onPacket(Packet<?> packet, PacketListener listener, CallbackInfo ci) {
         if (listener instanceof ServerGamePacketListenerImpl handler) {

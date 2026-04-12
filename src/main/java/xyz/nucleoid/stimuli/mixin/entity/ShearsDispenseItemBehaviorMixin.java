@@ -14,7 +14,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.entity.EntityShearEvent;
 
 @Mixin(ShearsDispenseItemBehavior.class)
-public class ShearsDispenserBehaviorMixin {
+public class ShearsDispenseItemBehaviorMixin {
     @WrapOperation(
             method = "tryShearEntity",
             at = @At(

@@ -18,7 +18,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.item.ItemThrowEvent;
 
 @Mixin(AbstractContainerMenu.class)
-public class ScreenHandlerMixin {
+public class AbstractContainerMenuMixin {
     @Shadow @Final public NonNullList<Slot> slots;
 
     @Inject(method = "doClick", at = @At("HEAD"), cancellable = true)

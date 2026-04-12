@@ -15,7 +15,7 @@ import xyz.nucleoid.stimuli.event.player.PlayerConsumeHungerEvent;
 import xyz.nucleoid.stimuli.event.player.PlayerRegenerateEvent;
 
 @Mixin(FoodData.class)
-public class HungerManagerMixin {
+public class FoodDataMixin {
     @Shadow private int foodLevel;
     @Shadow private float exhaustionLevel;
     @Shadow private float saturationLevel;

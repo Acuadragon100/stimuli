@@ -10,7 +10,7 @@ import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.item.ItemCraftEvent;
 
 @Mixin(ResultContainer.class)
-public abstract class CraftingResultInventoryMixin implements RecipeCraftingHolder {
+public abstract class ResultContainerMixin implements RecipeCraftingHolder {
     @Override
     public boolean setRecipeUsed(ServerPlayer player, RecipeHolder<?> recipe) {
         try (var invokers = Stimuli.select().forEntity(player)) {

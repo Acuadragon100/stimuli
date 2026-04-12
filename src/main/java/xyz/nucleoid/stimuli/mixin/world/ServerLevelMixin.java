@@ -23,7 +23,7 @@ import xyz.nucleoid.stimuli.event.world.FireTickEvent;
 import xyz.nucleoid.stimuli.event.world.SnowFallEvent;
 
 @Mixin(ServerLevel.class)
-public class ServerWorldMixin {
+public class ServerLevelMixin {
 
     @Inject(method = "addFreshEntity", at = @At("HEAD"), cancellable = true)
     private void applyEntitySpawnEvent(Entity entity, CallbackInfoReturnable<Boolean> cir) {

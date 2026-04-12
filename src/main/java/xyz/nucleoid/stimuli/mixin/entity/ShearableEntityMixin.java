@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Coerce;
 import xyz.nucleoid.stimuli.Stimuli;
 import xyz.nucleoid.stimuli.event.EventResult;
 import xyz.nucleoid.stimuli.event.entity.EntityShearEvent;
-import xyz.nucleoid.stimuli.mixin.BoggedEntityAccessor;
+import xyz.nucleoid.stimuli.mixin.BoggedAccessor;
 
 import java.util.List;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
@@ -67,7 +67,7 @@ public class ShearableEntityMixin {
                 var result = invokers.get(EntityShearEvent.EVENT).onShearEntity(entity, serverPlayer, hand, null);
                 if (result == EventResult.DENY) {
                     if ((Object) this instanceof Bogged) {
-                        SynchedEntityData.DataValue<Boolean> shearedEntry = SynchedEntityData.DataValue.create(BoggedEntityAccessor.getDATA_SHEARED(), false);
+                        SynchedEntityData.DataValue<Boolean> shearedEntry = SynchedEntityData.DataValue.create(BoggedAccessor.getDATA_SHEARED(), false);
                         var packet = new ClientboundSetEntityDataPacket(entity.getId(), List.of(shearedEntry));
                         serverPlayer.connection.send(packet);
                     }

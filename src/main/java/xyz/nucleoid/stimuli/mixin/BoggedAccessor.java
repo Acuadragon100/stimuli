@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(Bogged.class)
-public interface BoggedEntityAccessor {
+public interface BoggedAccessor {
     @Accessor
     static EntityDataAccessor<Boolean> getDATA_SHEARED() {
         throw new AssertionError();
