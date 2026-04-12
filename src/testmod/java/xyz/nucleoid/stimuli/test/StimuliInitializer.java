@@ -19,6 +19,7 @@ import xyz.nucleoid.stimuli.event.block.BlockDropItemsEvent;
 import xyz.nucleoid.stimuli.event.block.FlowerPotModifyEvent;
 import xyz.nucleoid.stimuli.event.block.PowderSnowMeltEvent;
 import xyz.nucleoid.stimuli.event.entity.EntityShearEvent;
+import xyz.nucleoid.stimuli.event.player.PlayerSpectateEntityEvent;
 import xyz.nucleoid.stimuli.event.projectile.ArrowFireEvent;
 import xyz.nucleoid.stimuli.event.world.ExplosionDetonatedEvent;
 
@@ -111,6 +112,13 @@ public final class StimuliInitializer implements ModInitializer {
                 server.getPlayerList().broadcastSystemMessage(message, false);
             }
 
+            return result;
+        });
+
+        Stimuli.global().listen(PlayerSpectateEntityEvent.EVENT, (player, target) -> {
+            player.sendSystemMessage(
+                    Component.literal("PlayerSpectateEntityEvent: ").append(target.getDisplayName())
+            );
             return result;
         });
     }
